@@ -50,7 +50,7 @@ for norm in [False, True]:
             labelstring="cumulative " + interest + norm*" per population" +log_scale*" (log-10 scale)"
             subind=1
             these_states=[] #variable keeps state names by plot for the legend
-            plt.figure(figsize=(15, 15), dpi= 80, facecolor='w', edgecolor='k')
+            plt.figure(figsize=(17, 15), dpi= 80, facecolor='w', edgecolor='k')
             most=0
             for i in range(len(state_names)):
                 #if starting new subgraph, set the subplot
@@ -85,8 +85,10 @@ for norm in [False, True]:
                 
                 if ((i%(statesper) == 0) & (i!=0)):
                     plt.legend(np.asarray(these_states),fontsize='small')
-                    plt.xlabel("date")
-                    plt.ylabel(labelstring)
+                    if (subind>np.ceil(n/2)):
+                        plt.xlabel("date")
+                    if (subind%np.ceil(n/2)==1):
+                        plt.ylabel(labelstring)
                     plt.xticks(rotation=45)
                     #plt.ylim((0,ylimit))
                     these_states=[]
@@ -95,9 +97,11 @@ for norm in [False, True]:
                 
             if len(these_states)!=0:
                     plt.legend(np.asarray(these_states),fontsize='small')
-                    plt.xlabel("date")
                     plt.xticks(rotation=45)
-                    plt.ylabel(labelstring)
+                    if (subind>np.ceil(n/2)):
+                        plt.xlabel("date")
+                    if (subind%np.ceil(n/2)==1):
+                        plt.ylabel(labelstring)
                     #plt.ylim((0,ylimit))
                     
             for i in range(n):
