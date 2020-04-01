@@ -11,7 +11,7 @@ import requests, pandas, io, numpy as np, datetime, matplotlib.pyplot as plt
 #show state population in legend?
 leg_pop=True
 #how many graphs?
-n=5
+n=6
 
 #%%step through options. 8 total plots
 for norm in [False, True]:
@@ -107,4 +107,4 @@ for norm in [False, True]:
                 ax.set_xlim(left=datetime.date(2020,3,1))
             
             #plt.show()
-            plt.savefig(labelstring+".png")
+            plt.savefig("figures/"+labelstring+".png")

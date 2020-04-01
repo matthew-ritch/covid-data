@@ -111,4 +111,3 @@ for i in range(n):
     ax.set_xlim(left=datetime.date(2020,3,1))
 
 #plt.show()
-plt.savefig(labelstring+".png")
