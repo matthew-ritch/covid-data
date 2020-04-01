@@ -108,7 +108,7 @@ for norm in [False, True]:
                 i=i+1
                 ax=plt.subplot(2,np.ceil(n/2),i)    
                 ax.set_ylim(top= most*1.2)
-                ax.set_xlim(left=datetime.date(2020,3,1))
+                ax.set_xlim(left=datetime.date(2020,3,1),right=datetime.date.today())
             
             #plt.show()
             plt.savefig("figures/"+labelstring+".png")
