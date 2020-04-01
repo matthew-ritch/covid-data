@@ -50,7 +50,7 @@ for norm in [False, True]:
             labelstring="cumulative " + interest + norm*" per population" +log_scale*" (log-10 scale)"
             subind=1
             these_states=[] #variable keeps state names by plot for the legend
-            plt.figure(figsize=(20, 20), dpi= 150, facecolor='w', edgecolor='k')
+            plt.figure(figsize=(15, 15), dpi= 150, facecolor='w', edgecolor='k')
             most=0
             for i in range(len(state_names)):
                 #if starting new subgraph, set the subplot
