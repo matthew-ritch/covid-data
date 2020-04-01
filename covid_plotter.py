@@ -9,13 +9,13 @@ import requests, pandas, io, numpy as np, datetime, matplotlib.pyplot as plt
 
 #%%settings
 #param? "cases" or "deaths"
-interest="cases"
+interest="deaths"
 #normalize by population?
 norm=False
 #log scale?
 log_scale=True
 #show state population in legend?
-leg_pop=False
+leg_pop=True
 #how many graphs?
 n=5
 
@@ -107,5 +107,7 @@ if len(these_states)!=0:
 for i in range(n):
     i=i+1
     ax=plt.subplot(2,np.ceil(n/2),i)    
-    ax.set_ylim([0, most*1.2])
+    ax.set_ylim(top= most*1.2)
     ax.set_xlim(left=datetime.date(2020,3,1))
+
+plt.show()
