@@ -72,7 +72,8 @@ for norm in [False, True]:
                 #convert from string to datetime format
                 dates=np.asarray([datetime.date(int(e[:4]),int(e[5:7]),int(e[8:])) for e in dates])
                 #take parameter of interest. can either be cases or deaths
-                to_plot=np.cumsum(np.asarray(cov_state[interest]))
+                #to_plot=np.cumsum(np.asarray(cov_state[interest]))
+                to_plot=(np.asarray(cov_state[interest]))
                 #do we want to normalize
                 if norm:
                     to_plot=to_plot/pop
@@ -107,7 +108,7 @@ for norm in [False, True]:
             for i in range(n):
                 i=i+1
                 ax=plt.subplot(2,np.ceil(n/2),i)    
-                ax.set_ylim(top= most*1.2)
+                #ax.set_ylim(top= most*1.2)
                 ax.set_xlim(left=datetime.date(2020,3,1),right=datetime.date.today())
             
             #plt.show()
