@@ -103,6 +103,7 @@ for norm in [False, True]:
                         plt.xlabel("date")
                     if (subind%np.ceil(n/2)==1):
                         plt.ylabel(labelstring)
+                    plt.autoscale(tight=True)
                     #plt.ylim((0,ylimit))
                     
             for i in range(n):
@@ -112,4 +113,6 @@ for norm in [False, True]:
                 ax.set_xlim(left=datetime.date(2020,3,1),right=datetime.date.today())
             
             #plt.show()
+            
+            plt.autoscale(tight=True)
             plt.savefig("figures/"+labelstring+".png")
