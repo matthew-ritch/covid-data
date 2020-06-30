@@ -12,6 +12,7 @@ import requests, pandas, io, numpy as np, datetime, matplotlib.pyplot as plt
 leg_pop=True
 #how many graphs?
 n=6
+avgdys = 14
 
 #%%step through options. 8 total plots
 for norm in [False, True]:
@@ -48,10 +49,10 @@ for norm in [False, True]:
                 state_names=state_names[bypop]
                 
                 statesper=np.ceil(len(state_names)/n)#states per graph
-                labelstring=(not cumulate)*"3 day avg new "  + cumulate*"cumulative " + interest + norm*" per population" +log_scale*" (log-10 scale)"
+                labelstring=(not cumulate)*(str(avgdys)+" day avg new ")  + cumulate*"cumulative " + interest + norm*" per population" +log_scale*" (log-10 scale)"
                 subind=1
                 these_states=[] #variable keeps state names by plot for the legend
-                plt.figure(figsize=(17, 15), dpi= 80, facecolor='w', edgecolor='k')
+                plt.figure(figsize=(17, 15), dpi= 100, facecolor='w', edgecolor='k')
                 most=0
                 for i in range(len(state_names)):
                     #if starting new subgraph, set the subplot
@@ -78,8 +79,9 @@ for norm in [False, True]:
                     if not cumulate:
                         change=np.diff(to_plot)
                         dates=dates[1:]
-                        to_plot = np.convolve(change,[1/3,1/3,1/3],'valid')
-                        dates=dates[2:]
+                        c = np.ones(avgdys)/avgdys
+                        to_plot = np.convolve(change,c,'valid')
+                        dates=dates[-len(to_plot):]
                         
                     
                     #do we want to normalize
